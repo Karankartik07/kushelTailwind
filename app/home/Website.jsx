@@ -51,9 +51,21 @@ const Website = () => {
 
   const navigate = useRouter();
 
+  // Only allow letters and spaces in name field, and keep input blank if only numbers are typed
   const handleFormChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === "name2") {
+      // If the value contains only numbers, set to blank
+      if (/^[0-9]+$/.test(value)) {
+        setFormData((prev) => ({ ...prev, [name]: "" }));
+      } else {
+        // Remove any character that is not a letter or space
+        const filtered = value.replace(/[^A-Za-z\s]/g, "");
+        setFormData((prev) => ({ ...prev, [name]: filtered }));
+      }
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
     console.log({ [name]: value });
   };
 
@@ -75,8 +87,18 @@ const Website = () => {
       return;
     }
 
+
+    // Name validation: only letters and spaces
+    const nameRegex = /^[A-Za-z\s]+$/;
+    if (formData.name2.trim() === "") {
+      toast.error("Please enter your name!");
+      return;
+    }
+    if (!nameRegex.test(formData.name2.trim())) {
+      toast.error("Name should only contain letters and spaces!");
+      return;
+    }
     if (
-      formData.name2.trim() === "" ||
       formData.phone2.trim() === "91" ||
       formData.email2.trim() === "" ||
       formData.message2.trim() === ""
@@ -355,7 +377,7 @@ const Website = () => {
                 placeholder="Email"
                 value={formData.email2}
                 onChange={handleFormChange}
-                className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full border border-gray-300 rounded-md p-3 focus:outline-none "
               />
             </div>
             <div className="mb-4">
@@ -371,7 +393,7 @@ const Website = () => {
                 placeholder="How Can We Help You?"
                 value={formData.message2}
                 onChange={handleFormChange}
-                className="w-full border border-gray-300 rounded-md p-3 h-28 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full border border-gray-300 rounded-md p-3 h-28 focus:outline-none "
               ></textarea>
             </div>
 

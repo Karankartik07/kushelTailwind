@@ -303,7 +303,7 @@ const data = [
   },
 ];
   return (
-    <header className="w-full  bg-white relative">
+    <header className="w-full fixed z-99  bg-white ">
       <div className=" max-w-[1720px] z-50 flex items-center justify-between gap-[15px] mx-auto px-[20px]  lg:px-[60px] py-[20px] relative top-[3px] w-full">
         {/* Logo */}
         <div className="flex items-center gap-2">
@@ -665,12 +665,12 @@ const data = [
 
       {/* Dropdown Menu */}
       {menuOpen && (
-        <div className="absolute top-23 left-0 w-full z-50 bg-white h-[100vh] shadow-lg">
+        <div className="absolute overflow-y-auto top-23 left-0 w-full z-50 bg-white h-[100vh] shadow-lg">
           <div className="p-4 space-y-4">
             {data?.map((item, index) => (
               <div key={index}>
                 {/* Top Level Item */}
-                <div className="flex items-center justify-between px-[15px]">
+                <div className="flex items-center justify-between border-b border-[#d0cece]  pb-[12px] px-[15px]">
                   <p
                     onClick={() => {
                       router.push(item.navigate);
@@ -702,7 +702,7 @@ const data = [
 
                 {/* Mid Level Menu */}
                 {curopen === index && (
-                  <div className="pl-4 mt-2 space-y-2">
+                  <div className="pl-3.5 space-y-2">
                     {item?.subpart?.map((item2, index2) => (
                       <div key={index2}>
                         <h4
@@ -710,14 +710,14 @@ const data = [
                             router.push(item2.navigate);
                             setMenuOpen(false);
                           }}
-                          className="text-gray-700 cursor-pointer font-medium"
+                          className="text-gray-700 cursor-pointer border-t border-[#d0cece] pt-[12px] text-md  font-medium"
                         >
                           {item2?.title}
                         </h4>
 
                         {/* Bottom Level Menu */}
                         {item2?.subpart?.length > 0 && (
-                          <div className="pl-4 mt-1 space-y-1 text-sm text-gray-600">
+                          <div className=" my-2 space-y-1 flex flex-wrap gap-4 text-sm text-[#868686]">
                             {item2?.subpart?.map((item3, index3) => (
                               <p
                                 key={index3}
@@ -727,7 +727,7 @@ const data = [
                                 }}
                                 className="cursor-pointer hover:underline"
                               >
-                                {item3?.title}
+                                {item3?.title} |
                               </p>
                             ))}
                           </div>

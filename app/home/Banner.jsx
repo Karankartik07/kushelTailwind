@@ -40,7 +40,7 @@ const NewBanner = () => {
 
     return (
         <section
-            className="w-full bg-cover bg-center bg-no-repeat py-16 px-[60px] max-md:px-2"
+            className="w-full pt-[160px] bg-cover bg-center bg-no-repeat py-16 px-[60px] max-md:px-2"
             style={{
                 backgroundImage:
                     "url('https://res.cloudinary.com/dqjbzgksw/image/upload/f_auto,q_auto,w_1600/v1748345231/new-banner-bg_dxpmfr.webp')",

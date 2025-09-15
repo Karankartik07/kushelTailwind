@@ -6,6 +6,7 @@ import Image from "next/image";
 import { FiPhoneCall } from "react-icons/fi";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
 const Website = () => {
   const [firstNo, setFirstNo] = useState(0);
@@ -13,13 +14,6 @@ const Website = () => {
   const [userAnswer, setUserAnswer] = useState("");
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const [captchaVerified, setCaptchaVerified] = useState(false);
-  const [formData, setFormData] = useState({
-    name2: "",
-    phone2: "",
-    email2: "",
-    message2: "",
-  });
-  const [loading, setLoading] = useState(false);
 
   const generateCaptcha = () => {
     const num1 = Math.floor(Math.random() * 10);
@@ -37,6 +31,7 @@ const Website = () => {
 
   const verifyCaptcha = () => {
     if (parseInt(userAnswer) !== correctAnswer) {
+      alert("Wrong Captcha! Try again.")
       toast.error("Wrong Captcha! Try again.");
       generateCaptcha();
       setCaptchaVerified(false);
@@ -46,13 +41,25 @@ const Website = () => {
     setCaptchaVerified(true);
   };
 
+  const [formData, setFormData] = useState({
+    name2: "",
+    phone2: "",
+    email2: "",
+    message2: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useRouter();
+
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    console.log({ [name]: value });
   };
 
   const handleForm = async (e) => {
     e.preventDefault();
+    // const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.[a-zA-Z]{2,}$/;
 
     if (!emailRegex.test(formData.email2)) {
@@ -61,8 +68,10 @@ const Website = () => {
     }
 
     const digitsOnly = formData.phone2.replace(/\D/g, "");
+
     if (digitsOnly.length < 10) {
       toast.error("Please enter a valid phone number (at least 10 digits)!");
+      alert("Please enter a valid phone number (at least 10 digits)!")
       return;
     }
 
@@ -73,6 +82,7 @@ const Website = () => {
       formData.message2.trim() === ""
     ) {
       toast.error("Please fill all the fields!!");
+      alert("Please fill all the fields!!")
       return;
     }
 
@@ -81,7 +91,12 @@ const Website = () => {
       generateCaptcha();
       return;
     }
-
+    if (parseInt(userAnswer) !== correctAnswer) {
+      toast.error("Wrong Captcha! Try again.");
+      generateCaptcha();
+      setCaptchaVerified(false);
+      return;
+    }
     setLoading(true);
     try {
       const response = await fetch("https://backend.kusheldigi.com/contact2", {
@@ -94,8 +109,10 @@ const Website = () => {
       });
 
       const result = await response.json();
+      console.log(result);
+
       if (response.ok || response.status === 200 || response.success === true) {
-        window.location.href = "/thankyou";
+        navigate.push("/thankyou");
         generateCaptcha();
       } else {
         alert(JSON.stringify(response), "Unknown error");
@@ -291,11 +308,12 @@ const Website = () => {
                 </label>
                 <input
                   type="text"
+                  required
                   name="name2"
                   placeholder="Your Name"
                   value={formData.name2}
                   onChange={handleFormChange}
-                  className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full border border-gray-300 rounded-md p-3 focus:outline-none "
                 />
               </div>
               <div>
@@ -315,6 +333,7 @@ const Website = () => {
                   country={"in"}
                   value={formData.phone2}
                   placeholder="Phone"
+                  required
                   onChange={(phone) =>
                     setFormData((prev) => ({ ...prev, phone2: phone }))
                   }
@@ -331,6 +350,7 @@ const Website = () => {
               </label>
               <input
                 type="email"
+                required
                 name="email2"
                 placeholder="Email"
                 value={formData.email2}
@@ -347,6 +367,7 @@ const Website = () => {
               </label>
               <textarea
                 name="message2"
+                required
                 placeholder="How Can We Help You?"
                 value={formData.message2}
                 onChange={handleFormChange}
@@ -361,6 +382,7 @@ const Website = () => {
               </span>
               <input
                 type="number"
+                required
                 value={userAnswer}
                 onChange={(e) => setUserAnswer(e.target.value)}
                 className="border-b-2 border-black text-center w-16 p-1 text-lg font-semibold focus:outline-none"
@@ -377,7 +399,7 @@ const Website = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-600 text-white font-bold py-3 rounded-full hover:bg-gradient-to-l transition-all duration-300"
+              className="w-full bg-gradient-to-r cursor-pointer from-blue-600 via-cyan-400 to-blue-600 text-white font-bold py-3 rounded-full hover:bg-gradient-to-l transition-all duration-300"
             >
               {loading ? "Sending..." : "Submit"}
             </button>

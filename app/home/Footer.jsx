@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   const [open, setOpen] = useState(null);
@@ -43,7 +44,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {/* Logo + tagline */}
           <div>
-            <img
+            <Image
               src="https://res.cloudinary.com/dd9tagtiw/image/upload/v1739012691/logo_zckmvw.png"
               alt="Kushel Digi Solutions official logo"
               width={170}
@@ -201,7 +202,7 @@ const Footer = () => {
             "https://res.cloudinary.com/dal5dlztv/image/upload/v1748276865/b2_cxuq7l.webp",
             "https://res.cloudinary.com/dal5dlztv/image/upload/v1748276849/b1_szuidn.webp",
           ].map((src, i) => (
-            <img key={i} src={src} alt={`Certification ${i + 1}`} className="w-28 h-auto" />
+            <Image key={i} width={112} height={112} src={src} alt={`Certification ${i + 1}`} className="w-28 h-auto" />
           ))}
         </div>
       </div>
@@ -216,7 +217,9 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <img
+              <Image
+              width={28}
+              height={28}
                 src="https://res.cloudinary.com/dgif730br/image/upload/f_auto,q_auto,w_35,h_35,c_scale/v1741074958/linkedin_logo-01_gvkq3i_ccm6sd.png"
                 alt="LinkedIn"
                 className="w-7 h-7"
@@ -227,7 +230,9 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <img
+              <Image
+              width={28}
+              height={28}
                 src="https://res.cloudinary.com/dgif730br/image/upload/f_auto,q_auto,w_35,h_35,c_scale/v1741075336/instagram_logo-01_dzqg3b_xzp4ys.png"
                 alt="Instagram"
                 className="w-7 h-7"
@@ -238,10 +243,12 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <img
+              <Image
                 src="https://res.cloudinary.com/dgif730br/image/upload/f_auto,q_auto,w_35,h_35,c_scale/v1741075570/facebook_logo-01_b88kjo_mhhfn3.png"
                 alt="Facebook"
                 className="w-7 h-7"
+                width={28}
+                height={28}
               />
             </a>
             <a
@@ -249,7 +256,9 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <img
+              <Image
+              width={28}
+              height={28}
                 src="https://res.cloudinary.com/dgif730br/image/upload/f_auto,q_auto,w_35,h_35,c_scale/v1741075813/twitter_logo-01_xh3vqk_ksousv.png"
                 alt="Twitter"
                 className="w-7 h-7"

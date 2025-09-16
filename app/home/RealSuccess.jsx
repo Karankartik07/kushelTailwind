@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 
 export default function RealSuccess() {
@@ -87,7 +88,10 @@ export default function RealSuccess() {
             key={index}
             className="bg-white border border-gray-200 p-6 rounded-lg shadow-sm text-left hover:border-indigo-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
-            <img
+            <Image
+            width={50}
+            height={50}
+              
               src={service.icon}
               alt={service.title}
               className="w-[50px] h-[50px] mb-5"

@@ -87,14 +87,14 @@ export default function Testimonials() {
                     <SplideSlide>
                         <div className="flex flex-col gap-4 bg-white rounded-[10px] relative min-h-[400px] min-w-[350px] p-6 shadow-md">
                             <div className="flex items-center justify-between w-full ">
-                                <img
+                                <Image
                                     loading="lazy"
                                     width={100}
                                     height={18}
                                     src="https://res.cloudinary.com/dd9tagtiw/image/upload/v1739014063/h2stars_qci2lf.webp"
                                     alt="stars"
                                 />
-                                <img
+                                <Image
                                     loading="lazy"
                                     width={100}
                                     height={70}
@@ -124,7 +124,7 @@ export default function Testimonials() {
                             {/* Top section with stars + logo */}
                             <div className="flex items-center justify-between w-full">
                                 {/* Stars */}
-                                <img
+                                <Image
                                     loading="lazy"
                                     width={100}
                                     height={18}
@@ -132,7 +132,7 @@ export default function Testimonials() {
                                     alt="stars"
                                 />
                                 {/* Client Logo */}
-                                <img
+                                <Image
                                     loading="lazy"
                                     width={100}
                                     height={80}
@@ -164,7 +164,7 @@ export default function Testimonials() {
                             {/* Stars + Logo */}
                             <div className="flex items-center justify-between w-full">
                                 {/* Stars */}
-                                <img
+                                <Image
                                     loading="lazy"
                                     width={100}
                                     height={18}
@@ -172,7 +172,7 @@ export default function Testimonials() {
                                     alt="stars"
                                 />
                                 {/* Client Logo */}
-                                <img
+                                <Image
                                     loading="lazy"
                                     width={100}
                                     height={80}

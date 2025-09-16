@@ -464,7 +464,9 @@ const data = [
                   <div>
                     <h4 className="font-bold flex items-center gap-2">
                       <div className="flex gap-2">
-                        <img
+                        <Image
+                        height={24}
+                        width={24}
                           className="w-6"
                           src="https://res.cloudinary.com/dxlykgx6w/image/upload/v1753193678/world_fzxwtv.png"
                           alt=""
@@ -510,7 +512,9 @@ const data = [
                   <div>
                     <h4 className="font-bold flex items-center gap-2">
                       <div className="flex gap-2">
-                        <img
+                        <Image
+                        height={24}
+                        width={24}
                           className="w-6"
                           src="https://res.cloudinary.com/dxlykgx6w/image/upload/v1753094658/european-union_coalcr.png"
                           alt=""
@@ -547,7 +551,9 @@ const data = [
                   {/* UAE */}
                 <div>
   <h4 className="font-bold flex items-center gap-2">
-    <img
+    <Image
+    width={24}
+    height={24}
       className="w-6"
       src="https://res.cloudinary.com/dxlykgx6w/image/upload/v1755607181/united-arab-emirates_yvsofb.png"
       alt="UAE flag"
@@ -569,7 +575,9 @@ const data = [
                   <div>
                     <h4 className="font-bold flex items-center gap-2">
                       <div className="flex gap-2">
-                        <img
+                        <Image
+                        height={24}
+                        width={24}
                           className="w-6"
                           src="https://res.cloudinary.com/dxlykgx6w/image/upload/v1757417157/united-states-of-america_lmrh4o.png"
                           alt=""
@@ -603,7 +611,9 @@ const data = [
                   <div>
                     <h4 className="font-bold flex items-center gap-2">
                       <div className="flex gap-2">
-                        <img
+                        <Image
+                        height={24}
+                        width={24}
                           className="w-6"
                           src="https://res.cloudinary.com/dxlykgx6w/image/upload/v1753093834/united-kingdom_uflwsf.png"
                           alt=""

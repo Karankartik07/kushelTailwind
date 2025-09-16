@@ -120,7 +120,9 @@ const OurTechno = () => {
                 className="mt-5 flex items-center justify-center gap-2 font-bold text-[clamp(14px,1.2vw,16px)] text-[#333] cursor-pointer transition-colors duration-300 hover:text-blue-600"
               >
                 Read more
-                <img
+                <Image
+                width={20}
+                height={20}
                   loading="lazy"
                   src="https://res.cloudinary.com/dqjbzgksw/image/upload/v1741866486/circle-arrow-icon_dcxfmm.svg"
                   alt="Arrow icon for website interaction Kushel Digi Solutions"
@@ -159,7 +161,9 @@ const OurTechno = () => {
                   className="mt-5 flex items-center justify-center gap-2 font-bold text-[15px] text-[#333] cursor-pointer transition-colors duration-300 hover:text-blue-600"
                 >
                   Read more
-                  <img
+                  <Image
+                  width={20}
+                  height={20}
                     loading="lazy"
                     src="https://res.cloudinary.com/dqjbzgksw/image/upload/v1741866486/circle-arrow-icon_dcxfmm.svg"
                     alt="Arrow icon for website interaction Kushel Digi Solutions"
